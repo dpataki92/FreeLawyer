@@ -9,10 +9,23 @@ class UserController < ApplicationController
     end
 
     post "/signup/client" do
-        "You are signed up!"
+        session[:user_type] = "client"
+        redirect "/questions/all"
     end
 
     post "/signup/lawyer" do
-        binding.pry
+        session[:user_type] = "lawyer"
+        redirect "/questions/all"
     end
+
+    get "/login" do
+        erb :'users/login'
+    end
+
+    post "/login" do
+        session[:user_type] = params[:user_type]
+        redirect "/questions/all"
+    end
+
+
 end
