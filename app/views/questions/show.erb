@@ -1,0 +1,36 @@
+<h4>Title:</h4> <br>
+<%=@question.title%> <br> <br>
+<h4>Description:</h4> <br>
+<%=@question.description%> <br> <br>
+Created at: <%=@question.created_at%> <br>
+Legal area: <%=@question.area%> <br>
+Jurisdiction: <%=@question.jurisdiction%> <br>
+
+<%if session[:current_user_type] == "client" && @question.client == current_user%>
+<a href="/questions/<%=@question.slug%>/edit">Edit Your Question</a>
+<a href="/questions/<%=@question.slug%>/edit">Delete Your Question</a>
+<%end%>
+
+<br><br>
+<h4>Answers:</h4> <br>
+<%@answers.each_with_index do |a, i|%>
+<%="#{i+1}. answer from #{a.lawyer.username}"%> <br><br>
+Content: <br>
+<%=a.content%> <br><br>
+Upvotes: <%=a.upvotes%><br><br>
+
+<%if @user_type == "client"%>
+<form action="questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
+<input type="submit" name="upvote" value="Upvote">
+</form>
+<%end%>
+<%end%>
+
+<br>
+
+<%if @user_type == "lawyer"%>
+<form action="/question/<%=@question.slug%>" method="post">
+​<textarea id="answer" name="answer" rows="10" cols="70"></textarea> <br>
+<input type="submit" value="Submit Your Answer">
+</form>
+<%end%>

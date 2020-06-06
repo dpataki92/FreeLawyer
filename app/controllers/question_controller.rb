@@ -35,10 +35,12 @@ class QuestionController < ApplicationController
     end
 
     get "/questions/new" do
-        if user_is_a? == "client"
+        if user_is_a? == "client" && logged_in?
             erb :'questions/new'
-        else
+        elsif user_is_a? == "lawyer" && logged_in?
             redirect "/questions/all"
+        else
+            redirect "/"
         end
     end
 
@@ -50,7 +52,16 @@ class QuestionController < ApplicationController
             
     end
 
-    get "/question/:slug"
+    get "/questions/:slug" do
+        
+        @question = Question.find_by_slug(params[:slug])
+        @answers = @question.answers
+        @user_type = session[:user_type]
+        
         erb :'questions/show'
+    end
+
+    post "/questions/:slug/answers/:id" do
+        
     end
 end
