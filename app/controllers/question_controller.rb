@@ -57,6 +57,7 @@ class QuestionController < ApplicationController
         @question = Question.find_by_slug(params[:slug])
         @answers = @question.answers.sort {|a, b| b.upvotes <=> a.upvotes}
         @user_type = session[:user_type]
+        @current_user = current_user
         
         erb :'questions/show'
     end
@@ -73,7 +74,8 @@ class QuestionController < ApplicationController
         redirect "/questions/#{params[:slug]}"
     end
 
-    
+    delete "/questions/:slug/answers/:id" do
+    end
 
    
 
