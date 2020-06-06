@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
   
     def current_user
       if user_is_a? == "client" 
-        Client.find(session[:user_id])
+        Client.find(session[:client_id])
       else
         Lawyer.find(session[:lawyer_id])
       end
