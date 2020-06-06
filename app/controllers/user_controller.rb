@@ -23,6 +23,7 @@ class UserController < ApplicationController
     end
 
     post "/login" do
+        
         session[:user_type] = params[:user_type]
         redirect "/questions/all"
     end
