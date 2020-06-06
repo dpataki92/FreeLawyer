@@ -12,16 +12,16 @@ c10 = Client.create(username: "client010", email: "1333tg5h@gmail.com", password
 c11 = Client.create(username: "client999", email: "nttzum@gmail.com", password: "clientpw7u7u7")
 
 # Creating lawyers
-Lawyer.create(username: "lawyer323", email: "njlkbhvk@gmail.com", password: "lawpw005")
-Lawyer.create(username: "lawyer456", email: "mmkmn@gmail.com", password: "lawyerpw03445")
-Lawyer.create(username: "lawyer999", email: "mknohvu@gmail.com", password: "lawpw0342")
-Lawyer.create(username: "lawyer555", email: "obibv@gmail.com", password: "legalpw0324")
-Lawyer.create(username: "lawyer444", email: "lnibvuotci@gmail.com", password: "attorneypw23r")
-Lawyer.create(username: "lawyer777", email: "oubvct@gmail.com", password: "pw2er3")
-Lawyer.create(username: "lawyer888", email: "ergt4r@gmail.com", password: "rth4j5")
-Lawyer.create(username: "lawyer222", email: "tbrthhz@gmail.com", password: "g35th4wh")
-Lawyer.create(username: "lawyer333", email: "weffw@gmail.com", password: "43z4h6h")
-Lawyer.create(username: "lawyer101", email: "fwf@gmail.com", password: "345h5")
+Lawyer.create(username: "lawyer323", email: "njlkbhvk@gmail.com", password: "lawpw005", expertise: ["tax", "immigration"], jurisdiction: "Austria")
+Lawyer.create(username: "lawyer456", email: "mmkmn@gmail.com", password: "lawyerpw03445", expertise: ["tax"], jurisdiction: "Hungary")
+Lawyer.create(username: "lawyer999", email: "mknohvu@gmail.com", password: "lawpw0342", expertise: ["family"], jurisdiction: "France")
+Lawyer.create(username: "lawyer555", email: "obibv@gmail.com", password: "legalpw0324", expertise: ["family", "immigration"], jurisdiction: "Spain")
+Lawyer.create(username: "lawyer444", email: "lnibvuotci@gmail.com", password: "attorneypw23r", expertise: ["immigration"], jurisdiction: "France")
+Lawyer.create(username: "lawyer777", email: "oubvct@gmail.com", password: "pw2er3", expertise: ["immigration"], jurisdiction: "Spain")
+Lawyer.create(username: "lawyer888", email: "ergt4r@gmail.com", password: "rth4j5", expertise: ["immigration", "tax"], jurisdiction: "Spain")
+Lawyer.create(username: "lawyer222", email: "tbrthhz@gmail.com", password: "g35th4wh", expertise: ["immigration"], jurisdiction: "Ireland")
+Lawyer.create(username: "lawyer333", email: "weffw@gmail.com", password: "43z4h6h", expertise: ["labour"], jurisdiction: "Germany")
+Lawyer.create(username: "lawyer101", email: "fwf@gmail.com", password: "345h5", expertise: ["criminal"], jurisdiction: "Portugal")
 
 # Creating questions
 q1 = Question.create(title: "Are there any EU rules on how much registration tax I have to pay in Cyprus?", description: "I have retired and am going to live full-time in my holiday home in Cyprus. I am bringing my car, which was bought and registered in Hungary.", jurisdiction: "Republic of Cyprus", area: "Tax Law")

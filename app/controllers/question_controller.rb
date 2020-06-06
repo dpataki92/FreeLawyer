@@ -52,6 +52,14 @@ class QuestionController < ApplicationController
             
     end
 
+    get "/questions/user" do
+        @user = current_user
+        @user_type = user_is_a?
+        @questions = @user.questions
+       
+        erb :'/questions/user'
+   end
+
     get "/questions/:slug" do
        
         @question = Question.find_by_slug(params[:slug])
@@ -111,6 +119,6 @@ class QuestionController < ApplicationController
         redirect "/questions/#{params[:slug]}"
     end
 
-   
+    
     
 end

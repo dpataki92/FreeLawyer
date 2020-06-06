@@ -40,5 +40,6 @@ class UserController < ApplicationController
         redirect "/questions/all"
     end
 
+    
 
 end
