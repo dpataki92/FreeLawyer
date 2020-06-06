@@ -63,12 +63,12 @@ class QuestionController < ApplicationController
     end
 
     post "/questions/:slug" do
-       
+        
         @question = Question.find_by_slug(params[:slug])
         @answer = @question.answers.create(content: params[:content])
         @answer.lawyer = current_user
         @answer.save
-        
+     
         redirect "/questions/#{params[:slug]}"
     end
 

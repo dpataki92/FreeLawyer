@@ -26,7 +26,7 @@ Upvotes: <%=a.upvotes%><br><br>
 <%end%>
 
 <%if @user_type == "lawyer" && @current_user == a.lawyer%>
-<form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="delete">
+<form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
 <input type="hidden" id="hidden" name="_method" value="delete">
 <input type="submit" value="Delete Your Answer">
 </form>
@@ -37,7 +37,7 @@ Upvotes: <%=a.upvotes%><br><br>
 
 <%if @user_type == "lawyer"%>
 <form action="/questions/<%=@question.slug%>" method="post">
-​<textarea id="answer" name="answer" rows="10" cols="70"></textarea> <br>
+​<textarea id="content" name="content" rows="10" cols="70"></textarea> <br>
 <input type="submit" value="Submit Your Answer">
 </form>
 <%end%>
