@@ -40,6 +40,11 @@ class UserController < ApplicationController
         redirect "/questions/all"
     end
 
-    
+    get "/lawyers" do
+        @current_user = current_user
+        @lawyers = Lawyer.order(upvotes: :desc)
+        
+        erb :'/users/lawyers'
+    end
 
 end

@@ -2,11 +2,12 @@
   <nav class="menu">
     <ul class="menu__list">
       <li class="menu__group"><a href="/questions/all" class="menu__link">All Questions</a></li>
-      <li class="menu__group"><a href="/questions/user" class="menu__link">My Questions</a></li>
+      <li class="menu__group"><a href="/questions/users/<%=@current_user.username%>" class="menu__link">My Questions</a></li>
       <li class="menu__group"><a href="/lawyers" class="menu__link">Lawyers</a></li>
     </ul>
   </nav>
 </div>
+<br><br>
 <h3>Ask a question from our registered lawyers below:</h3>
 
 <form action="/questions/new" method="post">

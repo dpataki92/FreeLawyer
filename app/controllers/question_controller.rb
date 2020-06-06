@@ -2,6 +2,8 @@ class QuestionController < ApplicationController
     
     get "/questions/all" do
         @questions = Question.order(created_at: :desc)
+        @current_user = current_user
+
         erb :'questions/all'
     end
 
@@ -10,6 +12,8 @@ class QuestionController < ApplicationController
         @jurisdiction = params[:jurisdiction]
         @area = params[:area]
         @questions = []
+        @current_user = current_user
+
         
         if !@area.empty? && !@jurisdiction.empty?
             Question.order(created_at: :desc).each do |q|
@@ -35,6 +39,8 @@ class QuestionController < ApplicationController
     end
 
     get "/questions/new" do
+        @current_user = current_user
+
         if user_is_a? == "client" && logged_in?
             erb :'questions/new'
         elsif user_is_a? == "lawyer" && logged_in?
@@ -52,10 +58,15 @@ class QuestionController < ApplicationController
             
     end
 
-    get "/questions/user" do
-        @user = current_user
+    get "/questions/users/:username" do
+        @current_user = current_user
+        if Client.all.collect {|c| c.username}.include?()
+            @user = Client.find_by(username: params[:username])
+        elsif session[:user_type] == "lawyer"
+            @user = Lawyer.find_by(username: params[:username])
+        end
         @user_type = user_is_a?
-        @questions = @user.questions
+        @questions = @current_user.questions
        
         erb :'/questions/user'
    end
@@ -82,6 +93,7 @@ class QuestionController < ApplicationController
 
     get "/questions/:slug/edit" do
         @question = Question.find_by_slug(params[:slug])
+        @current_user = current_user
         erb :'questions/edit'
     end
 
@@ -97,8 +109,9 @@ class QuestionController < ApplicationController
         
         @question = Question.find_by_slug(params[:slug])
         @question.destroy
+        @current_user = current_user
      
-        redirect "/questions/user"
+        redirect "/questions/users/#{@current_user.username}"
     end
 
     post "/questions/:slug/answers/:id" do
