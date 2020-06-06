@@ -33,4 +33,12 @@ class QuestionController < ApplicationController
 
         erb :'questions/all'
     end
+
+    get "/questions/new" do
+     
+        erb :'questions/new'
+    
+    end
+
+    
 end

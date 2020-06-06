@@ -23,8 +23,14 @@ class UserController < ApplicationController
     end
 
     post "/login" do
-        
         session[:user_type] = params[:user_type]
+        
+        if params[:user_type] == "client"
+            session[:client_id] = current_user.id
+        else 
+            session[:lawyer_id] = current_user.id
+        end
+        
         redirect "/questions/all"
     end
 
