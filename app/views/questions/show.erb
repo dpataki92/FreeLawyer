@@ -20,7 +20,7 @@ Content: <br>
 Upvotes: <%=a.upvotes%><br><br>
 
 <%if @user_type == "client"%>
-<form action="questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
+<form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
 <input type="submit" name="upvote" value="Upvote">
 </form>
 <%end%>
@@ -29,7 +29,7 @@ Upvotes: <%=a.upvotes%><br><br>
 <br>
 
 <%if @user_type == "lawyer"%>
-<form action="/question/<%=@question.slug%>" method="post">
+<form action="/questions/<%=@question.slug%>" method="post">
 ​<textarea id="answer" name="answer" rows="10" cols="70"></textarea> <br>
 <input type="submit" value="Submit Your Answer">
 </form>

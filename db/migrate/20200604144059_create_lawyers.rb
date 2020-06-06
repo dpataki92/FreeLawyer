@@ -6,7 +6,7 @@ class CreateLawyers < ActiveRecord::Migration
       t.string :password_digest
       t.string :expertise
       t.string :jurisdiction
-      t.integer :upvotes
+      t.integer :upvotes, default: 0
       t.timestamps
     end
   end

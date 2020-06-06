@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20200604155254) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
-    t.integer  "upvotes"
+    t.integer  "upvotes",     default: 0
     t.integer  "lawyer_id"
     t.integer  "question_id"
     t.datetime "created_at"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20200604155254) do
     t.string   "password_digest"
     t.string   "expertise"
     t.string   "jurisdiction"
-    t.integer  "upvotes"
+    t.integer  "upvotes",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -53,15 +53,29 @@ class QuestionController < ApplicationController
     end
 
     get "/questions/:slug" do
-        
+       
         @question = Question.find_by_slug(params[:slug])
-        @answers = @question.answers
+        @answers = @question.answers.sort {|a, b| b.upvotes <=> a.upvotes}
         @user_type = session[:user_type]
         
         erb :'questions/show'
     end
 
     post "/questions/:slug/answers/:id" do
+        @answer = Answer.find(params[:id])
         
+        if !params[:upvote].empty?
+            @answer.increment!(:upvotes)
+            @answer.lawyer.increment!(:upvotes)
+            @answer.save
+        end
+        
+        redirect "/questions/#{params[:slug]}"
     end
+
+    
+
+   
+
+    
 end
