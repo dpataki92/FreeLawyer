@@ -72,6 +72,27 @@ class QuestionController < ApplicationController
         redirect "/questions/#{params[:slug]}"
     end
 
+    get "/questions/:slug/edit" do
+        @question = Question.find_by_slug(params[:slug])
+        erb :'questions/edit'
+    end
+
+    patch "/questions/:slug" do
+        
+        @question = Question.find_by_slug(params[:slug])
+        @question.update(title: params[:title], description: params[:description], jurisdiction: params[:jurisdiction], area: params[:area])
+        
+        redirect "/questions/#{params[:slug]}"
+    end
+
+    delete "/questions/:slug" do
+        
+        @question = Question.find_by_slug(params[:slug])
+        @question.destroy
+     
+        redirect "/questions/all"
+    end
+
     post "/questions/:slug/answers/:id" do
         @answer = Answer.find(params[:id])
         

@@ -4,11 +4,20 @@
 <%=@question.description%> <br> <br>
 Created at: <%=@question.created_at%> <br>
 Legal area: <%=@question.area%> <br>
-Jurisdiction: <%=@question.jurisdiction%> <br><br>
+Jurisdiction: <%=@question.jurisdiction%> <br>
+<%if @question.updated_at =! @question.created_at%>
+Question was edited at: <%=@question.updated_at%>
+<%end%><br><br>
 
 <%if @user_type == "client" && @question.client == @current_user%>
-<a href="/questions/<%=@question.slug%>/edit">Edit Your Question</a>
-<a href="/questions/<%=@question.slug%>/edit">Delete Your Question</a>
+<form action="/questions/<%=@question.slug%>/edit" method="get">
+<input type="submit" value="Edit Your Question">
+</form>
+
+<form action="/questions/<%=@question.slug%>" method="post">
+<input type="hidden" id="hidden" name="_method" value="delete">
+<input type="submit" value="Delete Your Question">
+</form>
 <%end%>
 
 <br><br>
