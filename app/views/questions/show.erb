@@ -24,6 +24,13 @@ Upvotes: <%=a.upvotes%><br><br>
 <input type="submit" name="upvote" value="Upvote">
 </form>
 <%end%>
+
+<%if @user_type == "lawyer" && @current_user == a.lawyer%>
+<form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="delete">
+<input type="hidden" id="hidden" name="_method" value="delete">
+<input type="submit" value="Delete Your Answer">
+</form>
+<%end%>
 <%end%>
 
 <br>
