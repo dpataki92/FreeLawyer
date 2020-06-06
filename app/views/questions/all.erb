@@ -58,7 +58,10 @@
   </div>
   <br>
   <%@questions.each do |q|%>
-    <a href="/questions/<%="#{}"%>"><%=q.title%></a>
-    <br>
-
+    <a href="/questions/<%=q.slug%>"><%=q.title%></a><br>
+    Area: <%=q.area%><br>
+    Jurisdiction: <%=q.jurisdiction%><br>
+    Answers: <%=q.answers.size%><br>
+    Created at: <%=q.created_at%><br><br>
+  <%end%>
 </div>
