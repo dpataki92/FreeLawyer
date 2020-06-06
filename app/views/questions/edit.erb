@@ -2,7 +2,7 @@
 
 <form action="/questions/<%=@question.slug%>" method="post">
     <input type="hidden" id="hidden" name="_method" value="patch">
-    Title: <input type="text" id="title" name="title" value="<%=@question.title%>" size="50" required><br>
+    Title: <input type="text" id="title" name="title" value="<%=@question.title%>" size="70" required><br>
     Description:<br> ​<textarea id="description" name="description" rows="10" cols="70"><%=@question.description%></textarea><br>
 
     <label for="jurisdiction">Jurisdiction:</label>

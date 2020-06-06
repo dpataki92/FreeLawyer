@@ -90,7 +90,7 @@ class QuestionController < ApplicationController
         @question = Question.find_by_slug(params[:slug])
         @question.destroy
      
-        redirect "/questions/all"
+        redirect "/questions/user"
     end
 
     post "/questions/:slug/answers/:id" do
@@ -112,6 +112,5 @@ class QuestionController < ApplicationController
     end
 
    
-
     
 end

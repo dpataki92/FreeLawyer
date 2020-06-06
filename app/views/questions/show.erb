@@ -5,7 +5,7 @@
 Created at: <%=@question.created_at%> <br>
 Legal area: <%=@question.area%> <br>
 Jurisdiction: <%=@question.jurisdiction%> <br>
-<%if @question.updated_at =! @question.created_at%>
+<%if @question.updated_at != @question.created_at%>
 Question was edited at: <%=@question.updated_at%>
 <%end%><br><br>
 
