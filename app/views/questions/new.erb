@@ -1,53 +1,54 @@
+<div class="page">
+    <br><br>
+    <h3>Ask A Question From Our Lawyers Here:</h3>
 
-<br><br>
-<h3>Ask a question from our registered lawyers below:</h3>
+    <form action="/questions/new" method="post">
+        Title: <input type="text" id="title" name="title" required><br>
+        Description:<br> ​<textarea id="description" name="description" rows="10" cols="70"></textarea><br>
 
-<form action="/questions/new" method="post">
-    Title: <input type="text" id="title" name="title" required><br>
-    Description:<br> ​<textarea id="description" name="description" rows="10" cols="70"></textarea><br>
+        <label for="jurisdiction">Jurisdiction:</label>
+        <input type="text" list="jurisdictions" id="jurisdiction" name="jurisdiction">
 
-    <label for="jurisdiction">Jurisdiction:</label>
-    <input type="text" list="jurisdictions" id="jurisdiction" name="jurisdiction">
+        <datalist id="jurisdictions">
+            <option value="Austria"></option>
+            <option value="Belgium"></option>
+            <option value="Bulgaria"></option>
+            <option value="Croatia"></option>
+            <option value="Republic of Cyprus"></option>
+            <option value="Czech Republic"></option>
+            <option value="Denmark"></option>
+            <option value="Estonia"></option>
+            <option value="Finland"></option>
+            <option value="France"></option>
+            <option value="Germany"></option>
+            <option value="Greece"></option>
+            <option value="Hungary"></option>
+            <option value="Ireland"></option>
+            <option value="Italy"></option>
+            <option value="Latvia"></option>
+            <option value="Lithuania"></option>
+            <option value="Luxembourg"></option>
+            <option value="Netherlands"></option>
+            <option value="Poland"></option>
+            <option value="Portugal"></option>
+            <option value="Romania"></option>
+            <option value="Slovakia"></option>
+            <option value="Slovenia"></option>
+            <option value="Spain"></option>
+            <option value="Sweden"></option>
+        </datalist>
 
-    <datalist id="jurisdictions">
-        <option value="Austria"></option>
-        <option value="Belgium"></option>
-        <option value="Bulgaria"></option>
-        <option value="Croatia"></option>
-        <option value="Republic of Cyprus"></option>
-        <option value="Czech Republic"></option>
-        <option value="Denmark"></option>
-        <option value="Estonia"></option>
-        <option value="Finland"></option>
-        <option value="France"></option>
-        <option value="Germany"></option>
-        <option value="Greece"></option>
-        <option value="Hungary"></option>
-        <option value="Ireland"></option>
-        <option value="Italy"></option>
-        <option value="Latvia"></option>
-        <option value="Lithuania"></option>
-        <option value="Luxembourg"></option>
-        <option value="Netherlands"></option>
-        <option value="Poland"></option>
-        <option value="Portugal"></option>
-        <option value="Romania"></option>
-        <option value="Slovakia"></option>
-        <option value="Slovenia"></option>
-        <option value="Spain"></option>
-        <option value="Sweden"></option>
-    </datalist><br>
+        <label for="area">Area:</label>
+        <input type="text" list="areas" id="area" name="area">
 
-    <label for="area">Area:</label>
-    <input type="text" list="areas" id="area" name="area">
+        <datalist id="areas">
+            <option value="Immigration Law"></option>
+            <option value="Family Law"></option>
+            <option value="Labour Law"></option>
+            <option value="Tax Law"></option>
+            <option value="Criminal Law"></option>
+        </datalist><br><br>
 
-    <datalist id="areas">
-        <option value="Immigration Law"></option>
-        <option value="Family Law"></option>
-        <option value="Labour Law"></option>
-        <option value="Tax Law"></option>
-        <option value="Criminal Law"></option>
-    </datalist><br>
-
-    <input type="submit" value="Create Question">
-</form>
+        <input type="submit" value="Create Question">
+    </form>
+</div>
