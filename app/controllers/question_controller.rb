@@ -59,15 +59,19 @@ class QuestionController < ApplicationController
     end
 
     get "/questions/users/:username" do
+        
         @current_user = current_user
-        if Client.all.collect {|c| c.username}.include?()
-            @user = Client.find_by(username: params[:username])
-        elsif session[:user_type] == "lawyer"
-            @user = Lawyer.find_by(username: params[:username])
+        
+        if Client.find_by(username: params[:username])
+            @user_to_show = Client.find_by(username: params[:username])
+            @user_to_show_type = "client"
+            @questions = @user_to_show.questions
+        elsif Lawyer.find_by(username: params[:username])
+            @user_to_show = Lawyer.find_by(username: params[:username])
+            @user_to_show_type = "lawyer"
+            @questions = @user_to_show.questions
         end
-        @user_type = user_is_a?
-        @questions = @current_user.questions
-       
+
         erb :'/questions/user'
    end
 

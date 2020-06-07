@@ -1,11 +1,5 @@
 <div class="page">
-  <nav class="menu">
-    <ul class="menu__list">
-      <li class="menu__group"><a href="/questions/all" class="menu__link">All Questions</a></li>
-      <li class="menu__group"><a href="/questions/users/<%=@current_user.username%>" class="menu__link">My Questions</a></li>
-      <li class="menu__group"><a href="/lawyers" class="menu__link">Lawyers</a></li>
-    </ul>
-  </nav>
+  
   <br>
   <div class="filter">
     <form action="/questions/all" method="post">
@@ -64,4 +58,5 @@
     Answers: <%=q.answers.size%><br>
     Created at: <%=q.created_at%><br><br>
   <%end%>
+  
 </div>

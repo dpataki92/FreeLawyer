@@ -18,6 +18,18 @@
   <body>
     <div class="wrapper">
 
+    <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
+    <div class="page">
+      <nav class="menu">
+        <ul class="menu__list">
+          <li class="menu__group"><a href="/questions/all" class="menu__link">All Questions</a></li>
+          <li class="menu__group"><a href="/questions/users/<%=current_user.username%>" class="menu__link">My Questions</a></li>
+          <li class="menu__group"><a href="/lawyers" class="menu__link">Lawyers</a></li>
+        </ul>
+      </nav>
+    </div>
+    <%end%>
+
         <%= yield %>
 
       <footer class="branding">

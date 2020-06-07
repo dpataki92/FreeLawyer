@@ -1,11 +1,5 @@
 <div class="page">
-  <nav class="menu">
-    <ul class="menu__list">
-      <li class="menu__group"><a href="/questions/all" class="menu__link">All Questions</a></li>
-      <li class="menu__group"><a href="/questions/users/<%=@current_user.username%>" class="menu__link">My Questions</a></li>
-      <li class="menu__group"><a href="/lawyers" class="menu__link">Lawyers</a></li>
-    </ul>
-  </nav>
+
   <br>
   <div class="filter">
     <form action="/questions/user" method="post">
@@ -57,22 +51,24 @@
     </form>
   </div>
   <br>
+
   <h4>Profile:</h4> <br>
-  <%if @user_type == "client"%>
-  Username: <%=@current_user.username%><br>
-  Type: <%=@user_type%><br>
-  Email: <%=@current_user.email%><br>
-  Questions: <%=@current_user.questions.size%><br>
-  <%elsif @user_type == "lawyer"%>
-  Username: <%=@current_user.username%><br>
-  Type: <%=@user_type%><br>
-  Email: <%=@current_user.email%><br>
-  Expertise: <%=@current_user.expertise%><br>
-  Jurisdiction: <%=@current_user.jurisdiction%><br>
-  Answers: <%=@current_user.answers.size%><br>
-  Upvotes: <%=@current_user.upvotes%><br>
+  <%if @user_to_show_type == "client"%>
+  Username: <%=@user_to_show.username%><br>
+  Type: <%=@user_to_show_type%><br>
+  Email: <%=@user_to_show.email%><br>
+  Questions: <%=@user_to_show.questions.size%><br>
+  <%elsif @user_to_show_type == "lawyer"%>
+  Username: <%=@user_to_show.username%><br>
+  Type: <%=@user_to_show_type%><br>
+  Email: <%=@user_to_show.email%><br>
+  Expertise: <%=@user_to_show.expertise%><br>
+  Jurisdiction: <%=@user_to_show.jurisdiction%><br>
+  Answers: <%=@user_to_show.answers.size%><br>
+  Upvotes: <%=@user_to_show.upvotes%><br>
   <%end%>
   <br>
+
   <h4><%="Questions:"%></h4><br>
   <%@questions.each do |q|%>
     <a href="/questions/<%=q.slug%>"><%=q.title%></a><br>
