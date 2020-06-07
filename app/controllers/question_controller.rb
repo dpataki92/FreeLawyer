@@ -6,7 +6,7 @@ class QuestionController < ApplicationController
             @questions = Question.order(created_at: :desc)
             erb :'questions/all'
         else
-            redirect "/"
+            redirect "/login"
         end
 
     end

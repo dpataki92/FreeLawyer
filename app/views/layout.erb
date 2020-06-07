@@ -25,7 +25,7 @@
           <li class="menu__group"><a href="/questions/all" class="menu__link">All Questions</a></li>
           <li class="menu__group"><a href="/questions/users/<%=current_user.username%>" class="menu__link">My Profile</a></li>
           <li class="menu__group"><a href="/lawyers" class="menu__link">Lawyers</a></li>
-          <%if current_user == "client"%><li class="menu__group"><a href="/questions/new" class="menu__link">Ask A Question</a></li><%end%>
+          <%if user_is_a? == "client"%><li class="menu__group"><a href="/questions/new" class="menu__link">Ask A Question</a></li><%end%>
         </ul>
       </nav>
     </div>
