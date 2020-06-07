@@ -63,26 +63,33 @@ class QuestionController < ApplicationController
 
     get "/questions/users/:username" do
         
-        if Client.find_by(username: params[:username])
-            @user_to_show = Client.find_by(username: params[:username])
-            @user_to_show_type = "client"
-            @questions = @user_to_show.questions
-        elsif Lawyer.find_by(username: params[:username])
-            @user_to_show = Lawyer.find_by(username: params[:username])
-            @user_to_show_type = "lawyer"
-            @questions = @user_to_show.questions
+        if logged_in?
+            if Client.find_by(username: params[:username])
+                @user_to_show = Client.find_by(username: params[:username])
+                @user_to_show_type = "client"
+                @questions = @user_to_show.questions.order(created_at: :desc)
+            elsif Lawyer.find_by(username: params[:username])
+                @user_to_show = Lawyer.find_by(username: params[:username])
+                @user_to_show_type = "lawyer"
+                @questions = @user_to_show.questions.order(created_at: :desc)
+            end
+        else 
+            redirect "/"
         end
 
         erb :'/questions/user'
    end
 
     get "/questions/:slug" do
-       
-        @question = Question.find_by_slug(params[:slug])
-        @answers = @question.answers.sort {|a, b| b.upvotes <=> a.upvotes}
-        @user_type = session[:user_type]
-        
-        erb :'questions/show'
+        if logged_in?
+            @question = Question.find_by_slug(params[:slug])
+            @answers = @question.answers.sort {|a, b| b.upvotes <=> a.upvotes}
+            @user_type = session[:user_type]
+            
+            erb :'questions/show'
+        else
+            redirect "/"
+        end
     end
 
     post "/questions/:slug" do
@@ -96,8 +103,12 @@ class QuestionController < ApplicationController
     end
 
     get "/questions/:slug/edit" do
-        @question = Question.find_by_slug(params[:slug])
-        erb :'questions/edit'
+        if logged_in? && current_user.questions.include?(Question.find_by_slug(params[:slug]))
+            @question = Question.find_by_slug(params[:slug])
+            erb :'questions/edit'
+        else
+            redirect "/"
+        end
     end
 
     patch "/questions/:slug" do
@@ -109,28 +120,28 @@ class QuestionController < ApplicationController
     end
 
     delete "/questions/:slug" do
-        
+       
         @question = Question.find_by_slug(params[:slug])
-        @question.destroy
+        @question.delete
      
-        redirect "/questions/users/#{@current_user.username}"
+        redirect "/questions/users/#{current_user.username}"
     end
 
     post "/questions/:slug/answers/:id" do
+        
         @answer = Answer.find(params[:id])
         
-        if !params[:upvote].empty?
-            @answer.increment!(:upvotes)
-            @answer.lawyer.increment!(:upvotes)
-            @answer.save
-        end
+        @answer.increment!(:upvotes)
+        @answer.lawyer.increment!(:upvotes)
         
         redirect "/questions/#{params[:slug]}"
     end
 
     delete "/questions/:slug/answers/:id" do
+        
         @answer = Answer.find(params[:id])
-        @answer.destroy
+        @answer.delete
+
         redirect "/questions/#{params[:slug]}"
     end
 

@@ -1,56 +1,62 @@
 <div class="page">
+
+    
     <br><br>
     <h4>Title:</h4> <br>
-    <%=@question.title%> <br> <br>
+        <%=@question.title%> <br> <br>
     <h4>Description:</h4> <br>
-    <%=@question.description%> <br> <br>
-    Created at: <%=@question.created_at%> <br>
-    Legal area: <%=@question.area%> <br>
-    Jurisdiction: <%=@question.jurisdiction%> <br>
-    <%if @question.updated_at != @question.created_at%>
-    Question was edited at: <%=@question.updated_at%><br>
-    <%end%><br>
-
+        <%=@question.description%> <br> <br>
+    <div style="font-size:13px">
+        Area: 
+            <%=@question.area%> <br>
+        Jurisdiction: 
+            <%=@question.jurisdiction%> <br>
+        Created at: 
+            <%=@question.created_at%> <br>
+        <%if @question.updated_at != @question.created_at%>
+            Edited at: <%=@question.updated_at%><br>
+        <%end%><br>
+    </div>
     <%if @user_type == "client" && @question.client == current_user%>
-    <form action="/questions/<%=@question.slug%>/edit" method="get">
-    <input type="submit" value="Edit Your Question">
-    </form>
+        <form action="/questions/<%=@question.slug%>/edit" method="get">
+            <input type="submit" value="Edit Your Question">
+        </form>
 
-    <form action="/questions/<%=@question.slug%>" method="post">
-    <input type="hidden" id="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Your Question">
-    </form>
+        <form action="/questions/<%=@question.slug%>" method="post">
+            <input type="hidden" id="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete Your Question">
+        </form>
     <%end%>
 
     <br>
     <h4>Answers:</h4> <br>
         <%if @question.answers.size >= 1%>
             <%@answers.each_with_index do |a, i|%>
-            <em><%="#{i+1}. from #{a.lawyer.username}"%></em> <br><br>
-            <%=a.content%> <br><br>
-            Upvotes: <%=a.upvotes%><br><br>
+                <em><%="#{i+1}. from #{a.lawyer.username}"%></em> <br><br>
+                <%=a.content%> <br><br>
+                <p style="font-size:13px">Upvotes: <%=a.upvotes%></p>
 
-            <%if @user_type == "client"%>
-            <form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
-            <input type="submit" name="upvote" value="Upvote"><br><br>
-            </form>
-            <%end%>
+                <%if @user_type == "client"%>
+                <form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
+                <input type="submit" name="upvote" value="Upvote"><br><br>
+                </form>
+                <%end%>
 
-            <%if @user_type == "lawyer" && @current_user == a.lawyer%>
-            <form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
-            <input type="hidden" id="hidden" name="_method" value="delete">
-            <input type="submit" value="Delete Your Answer">
-            </form>
-            <%end%>
+                <%if @user_type == "lawyer" && current_user == a.lawyer%>
+                <form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
+                <input type="hidden" id="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete Your Answer">
+                </form>
+                <%end%>
             <%end%>
 
             <br>
 
             <%if @user_type == "lawyer"%>
-            <form action="/questions/<%=@question.slug%>" method="post">
-            ​<textarea id="content" name="content" rows="10" cols="70"></textarea> <br>
-            <input type="submit" value="Submit Your Answer">
-            </form>
+                <form action="/questions/<%=@question.slug%>" method="post">
+                    ​<textarea id="content" name="content" rows="10" cols="70"></textarea> <br>
+                    <input type="submit" value="Submit Your Answer">
+                </form>
             <%end%>
         <%else%>
             <p>No answers have been provided yet.</p>
