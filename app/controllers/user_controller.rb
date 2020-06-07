@@ -17,19 +17,28 @@ class UserController < ApplicationController
     end
 
     post "/signup/client" do
-        @client = Client.create(username: params[:username], email: params[:email], password: params[:password])
-        session[:user_type] = "client"
-        session[:client_id] = @client.id
-        
-        redirect "/questions/all"
+      
+        if !Lawyer.find_by(username: params[:username])
+            @client = Client.create(username: params[:username], email: params[:email], password: params[:password])
+            session[:user_type] = "client"
+            session[:client_id] = @client.id
+            
+            redirect "/questions/all"
+        else
+            "Sorry, this username has already been taken!"
+        end
     end
 
     post "/signup/lawyer" do
-        @lawyer = Lawyer.create(username: params[:username], email: params[:email], password: params[:password], jurisdiction: params[:jurisdiction], expertise: params[:expertise])
-        session[:user_type] = "lawyer"
-        session[:lawyer_id] = @lawyer.id
-        
-        redirect "/questions/all"
+        if !Client.find_by(username: params[:username])
+            @lawyer = Lawyer.create(username: params[:username], email: params[:email], password: params[:password], jurisdiction: params[:jurisdiction], expertise: params[:expertise])
+            session[:user_type] = "lawyer"
+            session[:lawyer_id] = @lawyer.id
+            
+            redirect "/questions/all"
+        else
+            redirect "/signup/lawyer"
+        end
     end
 
     get "/login" do
