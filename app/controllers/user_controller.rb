@@ -49,7 +49,7 @@ class UserController < ApplicationController
             if @client && @client.authenticate(params[:password])
                 session[:client_id] = Client.find_by(username: params[:username]).id
             end
-        elsif params[:user_type] == "client"
+        elsif params[:user_type] == "lawyer"
             @lawyer = Lawyer.find_by(username: params[:username])
             if @lawyer && @lawyer.authenticate(params[:password])
                 session[:lawyer_id] = Lawyer.find_by(username: params[:username]).id

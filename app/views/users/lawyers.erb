@@ -3,12 +3,12 @@
     <br><br>
 
     <%@lawyers.each_with_index do |l, i|%>
-        <h4><%="#{i+1}. #{l.username}"%></h4> <br><br>
+        <h4><%="#{i+1}. #{l.username}"%></h4> <br>
         Expertise: <%=l.expertise.gsub(/[\[\]\"]/, "")%> <br>
         Jurisdiction: <%=l.jurisdiction%><br>
         Upvotes: <%=l.upvotes%><br>
         <a href="/questions/users/<%=l.username%>">Profile And Questions</a> 
-        <br><br>
+        <br><br><br>
     <%end%>
 
 </div>
