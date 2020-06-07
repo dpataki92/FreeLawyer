@@ -1,18 +1,21 @@
 class QuestionController < ApplicationController
     
     get "/questions/all" do
-        @questions = Question.order(created_at: :desc)
-        @current_user = current_user
 
-        erb :'questions/all'
+        if logged_in?
+            @questions = Question.order(created_at: :desc)
+            erb :'questions/all'
+        else
+            redirect "/"
+        end
+
     end
 
     post "/questions/all" do
-        
+
         @jurisdiction = params[:jurisdiction]
         @area = params[:area]
         @questions = []
-        @current_user = current_user
 
         
         if !@area.empty? && !@jurisdiction.empty?
@@ -39,7 +42,6 @@ class QuestionController < ApplicationController
     end
 
     get "/questions/new" do
-        @current_user = current_user
 
         if user_is_a? == "client" && logged_in?
             erb :'questions/new'
@@ -48,6 +50,7 @@ class QuestionController < ApplicationController
         else
             redirect "/"
         end
+
     end
 
     post "/questions/new" do
@@ -59,8 +62,6 @@ class QuestionController < ApplicationController
     end
 
     get "/questions/users/:username" do
-        
-        @current_user = current_user
         
         if Client.find_by(username: params[:username])
             @user_to_show = Client.find_by(username: params[:username])
@@ -80,7 +81,6 @@ class QuestionController < ApplicationController
         @question = Question.find_by_slug(params[:slug])
         @answers = @question.answers.sort {|a, b| b.upvotes <=> a.upvotes}
         @user_type = session[:user_type]
-        @current_user = current_user
         
         erb :'questions/show'
     end
@@ -97,7 +97,6 @@ class QuestionController < ApplicationController
 
     get "/questions/:slug/edit" do
         @question = Question.find_by_slug(params[:slug])
-        @current_user = current_user
         erb :'questions/edit'
     end
 
@@ -113,7 +112,6 @@ class QuestionController < ApplicationController
         
         @question = Question.find_by_slug(params[:slug])
         @question.destroy
-        @current_user = current_user
      
         redirect "/questions/users/#{@current_user.username}"
     end
