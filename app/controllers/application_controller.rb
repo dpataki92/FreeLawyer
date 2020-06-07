@@ -19,11 +19,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def logged_in?
-      if user_is_a? == "client" 
-        !!session[:client_id]
-      else
-        !!session[:lawyer_id]
-      end
+       !!session[:client_id] || !!session[:lawyer_id]
     end
   
     def current_user
