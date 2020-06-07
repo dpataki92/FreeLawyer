@@ -56,7 +56,7 @@ class QuestionController < ApplicationController
     post "/questions/new" do
         
         @question = current_user.questions.create(title: params[:title], description: params[:description], area: params[:area], jurisdiction: params[:jurisdiction])
-        
+        binding.pry
         redirect "/questions/#{@question.slug}"
             
     end

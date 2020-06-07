@@ -27,7 +27,7 @@ class UserController < ApplicationController
     post "/signup/lawyer" do
         @lawyer = Lawyer.create(username: params[:username], email: params[:email], password: params[:password], jurisdiction: params[:jurisdiction], expertise: params[:expertise])
         session[:user_type] = "lawyer"
-        session[:lawyer_id] = @client.id
+        session[:lawyer_id] = @lawyer.id
         
         redirect "/questions/all"
     end
@@ -46,12 +46,12 @@ class UserController < ApplicationController
 
         if params[:user_type] == "client"
             @client = Client.find_by(username: params[:username])
-            if @client && @client.authenticate
+            if @client && @client.authenticate(params[:password])
                 session[:client_id] = Client.find_by(username: params[:username]).id
             end
         elsif params[:user_type] == "client"
             @lawyer = Lawyer.find_by(username: params[:username])
-            if @lawyer && @lawyer.authenticate
+            if @lawyer && @lawyer.authenticate(params[:password])
                 session[:lawyer_id] = Lawyer.find_by(username: params[:username]).id
             end
         else
@@ -70,7 +70,7 @@ class UserController < ApplicationController
     get "/logout" do
         if logged_in?
             session.clear
-            redirect "/login"
+            redirect "/"
         else
             redirect '/'
         end
