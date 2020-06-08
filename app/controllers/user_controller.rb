@@ -2,6 +2,7 @@ class UserController < ApplicationController
 
     get "/signup/client" do
         if !logged_in?
+            flash[:failure] if flash[:failure]
             erb :'users/signup_client'
         else
             redirect "/questions/all"
@@ -10,6 +11,7 @@ class UserController < ApplicationController
 
     get "/signup/lawyer" do
         if !logged_in?
+            flash[:failure] if flash[:failure]
             erb :'users/signup_lawyer'
         else
             redirect "/questions/all"
@@ -17,10 +19,11 @@ class UserController < ApplicationController
     end
 
     post "/signup/client" do
-      
-        if !Lawyer.find_by(username: params[:username])
-            flash.now[:success] = "You have successfuly signed up!"
-            @client = Client.create(username: params[:username], email: params[:email], password: params[:password])
+        @client = Client.new(username: params[:username], email: params[:email], password: params[:password])
+        
+        if !Lawyer.find_by(username: params[:username]) && @client.valid?
+            @client.save 
+            flash[:success] = "You have successfuly signed up!"
             session[:user_type] = "client"
             session[:client_id] = @client.id
             
@@ -32,9 +35,11 @@ class UserController < ApplicationController
     end
 
     post "/signup/lawyer" do
-        if !Client.find_by(username: params[:username])
-            flash.now[:success] = "You have successfuly signed up!"
-            @lawyer = Lawyer.create(username: params[:username], email: params[:email], password: params[:password], jurisdiction: params[:jurisdiction], expertise: params[:expertise])
+        @lawyer = Lawyer.new(username: params[:username], email: params[:email], password: params[:password], jurisdiction: params[:jurisdiction], expertise: params[:expertise])
+        
+        if !Client.find_by(username: params[:username]) && @lawyer.valid?
+            @lawyer.save
+            flash[:success] = "You have successfuly signed up!"
             session[:user_type] = "lawyer"
             session[:lawyer_id] = @lawyer.id
             
@@ -47,6 +52,7 @@ class UserController < ApplicationController
 
     get "/login" do
         if !logged_in?
+            flash[:failure] if flash[:failure]
             erb :'users/login'
         else
             redirect "questions/all"
@@ -61,16 +67,21 @@ class UserController < ApplicationController
             @client = Client.find_by(username: params[:username])
             if @client && @client.authenticate(params[:password])
                 session[:client_id] = Client.find_by(username: params[:username]).id
-                flash.now[:success] = "You are successfully logged in!"
+                flash[:success] = "You are successfully logged in!"
+            else
+                flash[:failure] = "Sorry, username or password is invalid!"
+                redirect "/login"
             end
         elsif params[:user_type] == "lawyer"
             @lawyer = Lawyer.find_by(username: params[:username])
             if @lawyer && @lawyer.authenticate(params[:password])
                 session[:lawyer_id] = Lawyer.find_by(username: params[:username]).id
-                flash.now[:success] = "You are successfully logged in!"
+                flash[:success] = "You are successfully logged in!"
+            else
+                flash[:failure] = "Sorry, username or password is invalid!"
+                redirect "/login"
             end
         else
-            flash[:failure] = "Sorry, username or password is invalid :("
             redirect "/login"
         end
         
