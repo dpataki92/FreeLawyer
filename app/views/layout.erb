@@ -13,10 +13,12 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <link rel="stylesheet" href="/stylesheets/all.css" />
-
+    <link rel="stylesheet" media="screen, projection" href="/stylesheets/flash.css" />
   </head>
   <body>
+
     <div class="wrapper">
+      
 
     <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
     <div class="page">
@@ -29,8 +31,14 @@
         </ul>
       </nav>
     </div>
+    <br>
     <%end%>
-
+        <% flash.keys.each do |type| %>
+          <div data-alert class="flash <%= type %> alert-box radius">
+            <h3><%= flash[type] %></h3>
+            <a href="#" class="close">&times;</a>
+          </div>
+        <% end %>
         <%= yield %>
 
       <footer class="branding">
