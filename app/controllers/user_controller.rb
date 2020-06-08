@@ -102,4 +102,11 @@ class UserController < ApplicationController
             redirect '/'
         end
     end
+
+    get "/delete" do
+        current_user.destroy
+        session.clear
+        flash[:success] = "You have successfully deleted your account!"
+        redirect "/"
+    end
 end

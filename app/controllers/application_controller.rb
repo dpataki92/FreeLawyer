@@ -13,6 +13,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     if !logged_in?
+      flash[:success] if flash[:success]
       erb :index
     else
       redirect "/questions/all"
