@@ -79,5 +79,7 @@
   <%end%>
   <br>
   <br>
+  <%if current_user == @user_to_show%>
   <a href="/delete" onclick="return confirm('Are you sure you want to delete your profile?');">Delete My Profile</a>
+  <%end%>
 </div>
