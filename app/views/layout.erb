@@ -20,21 +20,21 @@
     <div class="wrapper">
       
 
-    <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
+    
     <div class="page">
-      <nav class="menu">
+
+        <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
+        <nav class="menu">
         <ul class="menu__list">
           <li class="menu__group"><a href="/questions/all" class="menu__link">All Questions</a></li>
           <li class="menu__group"><a href="/questions/users/<%=current_user.username%>" class="menu__link">My Profile</a></li>
           <li class="menu__group"><a href="/lawyers" class="menu__link">Lawyers</a></li>
           <%if user_is_a? == "client"%><li class="menu__group"><a href="/questions/new" class="menu__link">Ask A Question</a></li><%end%>
         </ul>
-      </nav>
-    </div>
-    <br>
-    <%end%>
-    
-        <% flash.keys.each do |type| %>
+        </nav>
+        <%end%>
+      
+      <% flash.keys.each do |type| %>
           <div data-alert class="flash <%= type %> alert-box radius">
             <h4><%= flash[type] %></h4>
           </div>
@@ -42,6 +42,11 @@
               setTimeout("$('.flash').fadeOut('slow')", 3000)
           </script>
         <% end %>
+    </div>
+    <br>
+    
+    
+        
         <%= yield %>
 
       <footer class="branding">

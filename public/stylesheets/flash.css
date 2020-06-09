@@ -1,19 +1,21 @@
 .flash.success {
-    width: 600px;
+    width: 550px;
     padding: 5px;
     font-weight: bold;
     margin: 20px;
-    background: green;
-    color:#666;
+    background: #33FF33;
+    color: white;
+    text-align: center;
     border:1px solid #ccc;
   }
 
   .flash.failure {
-    width: 600px;
+    width: 550px;
     padding: 5px;
     font-weight: bold;
     margin: 20px;
-    background: red;
-    color: #666;
+    background: #FF3333;
+    color:white;
+    text-align: center;
     border:1px solid #ccc;
   }
