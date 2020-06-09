@@ -4,7 +4,7 @@
   <div class="filter">
     <form action="/questions/all" method="post">
 
-      <label for="jurisdiction">Jurisdiction:</label>
+      <label for="jurisdiction"><strong>Jurisdiction:</strong></label>
       <input type="text" list="jurisdictions" id="jurisdiction" name="jurisdiction">
 
         <datalist id="jurisdictions">
@@ -36,7 +36,7 @@
             <option value="Sweden"></option>
         </datalist>
 
-        <label for="area">Area:</label>
+        <label for="area"><strong>Area:</strong></label>
         <input type="text" list="areas" id="area" name="area">
 
         <datalist id="areas">
@@ -53,10 +53,10 @@
   <br>
   <%@questions.each do |q|%>
     <a href="/questions/<%=q.slug%>" id="title"><%=q.title%></a><br>
-    <p class="question-data">Jurisdiction</p>: <%=q.jurisdiction%><br>
-    <p class="question-data">Area</p>: <%=q.area%><br>
-    <p class="question-data">Answers</p>: <%=q.answers.size%><br>
-    <p class="question-data" id="last-question-data">Created at</p>: <%=q.created_at%><br><br>
+    <p class="data-type">Jurisdiction</p>: <%=q.jurisdiction%><br>
+    <p class="data-type">Area</p>: <%=q.area%><br>
+    <p class="data-type">Answers</p>: <%=q.answers.size%><br>
+    <p class="data-type" id="last-question-data">Created at</p>: <%=q.created_at%><br><br>
   <%end%>
   
 </div>

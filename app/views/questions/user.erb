@@ -4,7 +4,7 @@
   <div class="filter">
     <form action="/questions/user" method="post">
 
-      <label for="jurisdiction">Jurisdiction:</label>
+      <label for="jurisdiction"><strong>Jurisdiction:</strong></label>
       <input type="text" list="jurisdictions" id="jurisdiction" name="jurisdiction">
 
         <datalist id="jurisdictions">
@@ -36,7 +36,7 @@
             <option value="Sweden"></option>
         </datalist>
 
-        <label for="area">Area:</label>
+        <label for="area"><strong>Area:</strong></label>
         <input type="text" list="areas" id="area" name="area">
 
         <datalist id="areas">
@@ -54,28 +54,28 @@
 
   <h4>Profile:</h4> <br>
   <%if @user_to_show_type == "client"%>
-    Username: <%=@user_to_show.username%><br>
-    Type: <%=@user_to_show_type%><br>
-    Email: <%=@user_to_show.email%><br>
-    Questions: <%=@user_to_show.questions.size%><br>
+    <p class="data-type">Username</p>: <%=@user_to_show.username%><br>
+    <p class="data-type">Type</p>: <%=@user_to_show_type%><br>
+    <p class="data-type">Email</p>: <%=@user_to_show.email%><br>
+    <p class="data-type">Questions</p>: <%=@user_to_show.questions.size%><br>
   <%elsif @user_to_show_type == "lawyer"%>
-    Username: <%=@user_to_show.username%><br>
-    Type: <%=@user_to_show_type%><br>
-    Email: <%=@user_to_show.email%><br>
-    Expertise: <%=@user_to_show.expertise.gsub(/[\[\]\"]/, "")%><br>
-    Jurisdiction: <%=@user_to_show.jurisdiction%><br>
-    Answers: <%=@user_to_show.answers.size%><br>
-    Upvotes: <%=@user_to_show.upvotes%><br>
+    <p class="data-type">Username</p>: <%=@user_to_show.username%><br>
+    <p class="data-type">Type</p>: <%=@user_to_show_type%><br>
+    <p class="data-type">Email</p>: <%=@user_to_show.email%><br>
+    <p class="data-type">Expertise</p>: <%=@user_to_show.expertise.gsub(/[\[\]\"]/, "")%><br>
+    <p class="data-type">Jurisdiction</p>: <%=@user_to_show.jurisdiction%><br>
+    <p class="data-type">Answers</p>: <%=@user_to_show.answers.size%><br>
+    <p class="data-type">Upvotes</p>: <%=@user_to_show.upvotes%><br>
   <%end%>
   <br>
 
   <h4><%="Questions:"%></h4><br>
   <%@questions.each do |q|%>
-    <a href="/questions/<%=q.slug%>"><%=q.title%></a><br>
-    Area: <%=q.area%><br>
-    Jurisdiction: <%=q.jurisdiction%><br>
-    Answers: <%=q.answers.size%><br>
-    Created at: <%=q.created_at%><br><br>
+    <a href="/questions/<%=q.slug%>" id="title"><%=q.title%></a><br>
+    <p class="data-type">Area</p>: <%=q.area%><br>
+    <p class="data-type">Jurisdiction</p>: <%=q.jurisdiction%><br>
+    <p class="data-type">Answers</p>: <%=q.answers.size%><br>
+    <p class="data-type">Created at</p>: <%=q.created_at%><br><br>
   <%end%>
   <br>
   <br>
