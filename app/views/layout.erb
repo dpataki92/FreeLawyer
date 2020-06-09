@@ -17,10 +17,13 @@
   </head>
   <body>
 
+    <header class="branding">
+        <strong><small>&copy; 2020 FreeLawyer</strong></small>
+      </header>
+
     <div class="wrapper">
       
 
-    
     <div class="page">
 
         <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
@@ -50,9 +53,9 @@
         <%= yield %>
 
       <footer class="branding">
-        <small>&copy; 2020 <strong>FreeLawyer</strong></small>
+        <strong><small>&copy; 2020 FreeLawyer</strong></small>
         <%if logged_in?%>
-        <a href="/logout">Log out</a>
+        <strong><a href="/logout" onclick="return confirm('Are you sure you want to log out?');">Log out</a></strong>
         <%end%>
       </footer>
     </div>

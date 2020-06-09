@@ -80,6 +80,7 @@
   <br>
   <br>
   <%if current_user == @user_to_show%>
+  <a href="/logout" onclick="return confirm('Are you sure you want to log out?');">Log out</a><br><br>
   <a href="/delete" onclick="return confirm('Are you sure you want to delete your profile?');">Delete My Profile</a>
   <%end%>
 </div>

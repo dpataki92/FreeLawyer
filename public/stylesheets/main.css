@@ -115,6 +115,12 @@
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
+
+h2.login {
+  margin-top: -28%;
+}
+
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
@@ -259,6 +265,11 @@ p#last-question-data {
 
 strong {
   color: #4CAF50;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 
