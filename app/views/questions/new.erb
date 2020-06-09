@@ -1,12 +1,21 @@
 <div class="page">
-    <br><br>
-    <h3>Ask A Question From Our Lawyers Here:</h3>
-
+    <h3>Provide details and click on Create Question below:</h3>
+    <br>
     <form action="/questions/new" method="post">
-        Title: <input type="text" id="title" name="title" required><br>
-        Description:<br> ​<textarea id="description" name="description" rows="10" cols="70"></textarea><br>
+        <strong>Title:</strong> <input type="text" id="title" name="title" required><br><br>
 
-        <label for="jurisdiction">Jurisdiction:</label>
+        <label for="area"><strong>Area:</strong></label>
+        <input type="text" list="areas" id="area" name="area">
+
+        <datalist id="areas">
+            <option value="Immigration Law"></option>
+            <option value="Family Law"></option>
+            <option value="Labour Law"></option>
+            <option value="Tax Law"></option>
+            <option value="Criminal Law"></option>
+        </datalist>
+
+        <label for="jurisdiction"><strong>Jurisdiction:</strong></label>
         <input type="text" list="jurisdictions" id="jurisdiction" name="jurisdiction">
 
         <datalist id="jurisdictions">
@@ -37,18 +46,9 @@
             <option value="Spain"></option>
             <option value="Sweden"></option>
         </datalist>
+        <br><br>
 
-        <label for="area">Area:</label>
-        <input type="text" list="areas" id="area" name="area">
-
-        <datalist id="areas">
-            <option value="Immigration Law"></option>
-            <option value="Family Law"></option>
-            <option value="Labour Law"></option>
-            <option value="Tax Law"></option>
-            <option value="Criminal Law"></option>
-        </datalist><br><br>
-
+        <strong>Description:</strong><br> ​<textarea id="description" name="description" rows="10" cols="70"></textarea><br>
         <input class="submit" type="submit" value="Create Question">
     </form>
 </div>

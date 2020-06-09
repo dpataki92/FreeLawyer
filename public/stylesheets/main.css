@@ -240,7 +240,7 @@ p.data-type {
   background: #DCDCDC;
 }
 
-#last-question-data {
+p#last-question-data {
   border-bottom: 1px solid #ccc;
 }
 
