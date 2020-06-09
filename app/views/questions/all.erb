@@ -47,16 +47,16 @@
             <option value="Criminal Law"></option>
         </datalist>
 
-        <input type="submit" value="Search">
+        <input class="submit" type="submit" value="Search">
     </form>
   </div>
   <br>
   <%@questions.each do |q|%>
-    <a href="/questions/<%=q.slug%>"><%=q.title%></a><br>
-    Jurisdiction: <%=q.jurisdiction%><br>
-    Area: <%=q.area%><br>
-    Answers: <%=q.answers.size%><br>
-    Created at: <%=q.created_at%><br><br>
+    <a href="/questions/<%=q.slug%>" id="title"><%=q.title%></a><br>
+    <p class="question-data">Jurisdiction</p>: <%=q.jurisdiction%><br>
+    <p class="question-data">Area</p>: <%=q.area%><br>
+    <p class="question-data">Answers</p>: <%=q.answers.size%><br>
+    <p class="question-data" id="last-question-data">Created at</p>: <%=q.created_at%><br><br>
   <%end%>
   
 </div>

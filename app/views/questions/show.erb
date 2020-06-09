@@ -19,12 +19,12 @@
     </div>
     <%if @user_type == "client" && @question.client == current_user%>
         <form action="/questions/<%=@question.slug%>/edit" method="get">
-            <input type="submit" value="Edit Your Question">
+            <input class="submit" type="submit" value="Edit Your Question">
         </form>
 
         <form action="/questions/<%=@question.slug%>" method="post">
             <input type="hidden" id="hidden" name="_method" value="delete">
-            <input type="submit" value="Delete Your Question">
+            <input class="submit" type="submit" value="Delete Your Question">
         </form>
     <%end%>
 
@@ -38,14 +38,14 @@
 
                 <%if @user_type == "client"%>
                 <form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
-                <input type="submit" name="upvote" value="Upvote"><br><br>
+                <input class="submit" type="submit" name="upvote" value="Upvote"><br><br>
                 </form>
                 <%end%>
 
                 <%if @user_type == "lawyer" && current_user == a.lawyer%>
                 <form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
                 <input type="hidden" id="hidden" name="_method" value="delete">
-                <input type="submit" value="Delete Your Answer">
+                <input class="submit" type="submit" value="Delete Your Answer">
                 </form>
                 <%end%>
             <%end%>
@@ -55,7 +55,7 @@
             <%if @user_type == "lawyer"%>
                 <form action="/questions/<%=@question.slug%>" method="post">
                     ​<textarea id="content" name="content" rows="10" cols="70"></textarea> <br>
-                    <input type="submit" value="Submit Your Answer">
+                    <input class="submit" type="submit" value="Submit Your Answer">
                 </form>
             <%end%>
         <%else%>

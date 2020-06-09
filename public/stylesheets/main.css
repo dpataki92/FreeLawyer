@@ -7,19 +7,6 @@
     padding: 0;
   }
 
-  html, body {
-    height: 100%;
-    width: 100%;
-  }
-
-  /* --- Welcome Page Styles --- */
-  body {
-    background-color: #0074D9;
-    color: #333;
-    font-family: Sans-Serif;
-    line-height: 18px;
-  }
-
   .wrapper {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -29,11 +16,6 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
-  }
-
-  h1 {
-    font-size: 36px;
-    line-height: 54px;
   }
 
   h2 {
@@ -228,6 +210,51 @@ form .checkboxes {
   flex-direction: column;
   align-items: flex-start;
 }
+a {
+  color: green;
+}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+a#title {
+  font-size: 18px;
+}
+
+p.question-data {
+  display: inline;
+  background: #DCDCDC;
+}
+
+#last-question-data {
+  border-bottom: 1px solid #ccc;
+}
+
+.submit {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid;
+  padding: 2px;
+}
+
+.submit:hover, .submit:active {
+  background-color: green;
+}
+
 
 body {
   background: #76b852; /* fallback for old browsers */
