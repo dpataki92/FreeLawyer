@@ -1,26 +1,17 @@
-<h3>Sign Up Below And Provide Legal Assistance To Clients!</h3>
 
-<form action="/signup/lawyer" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <label for="expertise">Expertise:</label>
-    Immigration law<input type="checkbox" id="immigaration" name="expertise[]" value="immigration">
-    Family law<input type="checkbox" id="family" name="expertise[]" value="family">
-    Tax law<input type="checkbox" id="tax" name="expertise[]" value="tax">
-    Labour law<input type="checkbox" id="labour" name="expertise[]" value="labour">
-    Criminal law<input type="checkbox" id="criminal" name="expertise[]" value="criminal">
-    <br>
-    <label for="jurisdiction">Jurisdiction</label>
-    <input type="text" list="jurisdictions" id="jurisdiction" name="jurisdiction">
 
-    <datalist id="jurisdictions">
+
+<div class="login-page">
+<h2>Lawyer Sign Up</h2>
+<h4>Provide Legal Assistance And Get Upvotes</h4>
+  <div class="form">
+  
+    <form class="login-form" action="/signup/lawyer" method="post">
+      <input type="text" placeholder="username" id="username" name="username" required/>
+      <input type="text" placeholder="email" id="email" name="email" required/>
+      <input type="password" placeholder="password" id="password" name="password" required/>
+      <input type="text" list="jurisdictions" id="jurisdiction" name="jurisdiction" placeholder="jurisdiction">
+      <datalist id="jurisdictions">
         <option value="Austria"></option>
         <option value="Belgium"></option>
         <option value="Bulgaria"></option>
@@ -48,6 +39,18 @@
         <option value="Spain"></option>
         <option value="Sweden"></option>
     </datalist>
+    <input type="text" list="areas" id="area" name="expertise[]" placeholder="legal area" multiple>
+      <datalist id="areas">
+        <option value="Immigration Law"></option>
+        <option value="Family Law"></option>
+        <option value="Labour Law"></option>
+        <option value="Tax Law"></option>
+        <option value="Criminal Law"></option>
+    </datalist>
     <br>
-    <input type="submit" value="Sign Up">
-</form>
+    
+      <button name="user_type" value="client">Sign Up</button>
+      <p class="message">Already have an account? <a href="/login">Log In</a></p>
+    </form>
+  </div>
+</div>

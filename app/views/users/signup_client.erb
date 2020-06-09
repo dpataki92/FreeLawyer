@@ -1,14 +1,16 @@
-<h3>Sign Up Below And Ask Legal Questions From Lawyers For Free!</h3>
 
-<form action="/signup/client" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br><br>
-    <input type="submit" value="Sign Up">
-</form>
+
+<div class="login-page">
+<h2>Client Sign Up</h2>
+<h4>Ask Questions From Lawyers For Free</h4>
+  <div class="form">
+  
+    <form class="login-form" action="/signup/client" method="post">
+      <input type="text" placeholder="username" id="username" name="username" required/>
+      <input type="text" placeholder="email" id="email" name="email" required/>
+      <input type="password" placeholder="password" id="password" name="password" required/>
+      <button name="user_type" value="client">Sign Up</button>
+      <p class="message">Already have an account? <a href="/login">Log In</a></p>
+    </form>
+  </div>
+</div>

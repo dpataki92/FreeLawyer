@@ -216,6 +216,19 @@
   text-align: center;
 }
 
+.login-page h4 {
+  text-align: center;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+form .checkboxes {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 body {
   background: #76b852; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
