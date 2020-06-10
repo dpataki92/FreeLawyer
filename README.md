@@ -2,8 +2,9 @@
 
 # Introduction
 
-FreeLawyer is a basic legal collaboration platform for lawyers and clients seeking legal help in the EU. Users can sign up as either clients or lawyers. Clients can ask legal questions, view questions raised by other client, interact with their questions and upvote answers provided by lawyers. Lawyers can answer client questions and get upvotes for their answers. Lawyers with the most upvotes
-appear at the top of the all lawyers ranking, while the most popular answers appear first under every question. 
+FreeLawyer is a basic legal collaboration platform for lawyers and clients seeking legal help in the EU. Users can sign up as either clients or lawyers. 
+
+Clients can ask legal questions, view questions raised by other clients and upvote answers provided by lawyers. Lawyers can answer client questions and get upvotes for their answers. Lawyers with the most upvotes appear at the top of the all lawyers ranking, while the most popular answers appear first under every question. 
 
 # Installation
 
