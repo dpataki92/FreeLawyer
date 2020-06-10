@@ -22,7 +22,7 @@
     <%else%>
     <div class="wrapper">
     <%end%>
-    
+
     <div class="page">
         <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
         <nav class="menu">
@@ -48,12 +48,15 @@
     
         <%= yield %>
 
+      
+      <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
       <footer class="branding">
         <strong><small>&copy; 2020 FreeLawyer</strong></small>
         <%if logged_in?%>
         <strong><a href="/logout" onclick="return confirm('Are you sure you want to log out?');">Log out</a></strong>
         <%end%>
       </footer>
+      <%end%>
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
