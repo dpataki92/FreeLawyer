@@ -1,20 +1,30 @@
 FreeLawyer
 
 Introduction
-A Sinatra CRUD app for users to write game reviews. In addition to creating, reading, updating, and deleting a review, a user will be able to view other users' reviews as well.
 
-Installation
--Fork and clone repo to your local environment.
+FreeLawyer is a basic legal collaboration platform for lawyers and clients seeking legal help in the EU. Users can sign up as either clients or lawyers. Clients can ask legal questions, view questions raised by other client, interact with their questions and upvote answers provided by lawyers. Lawyers can answer client questions and get upvotes for their answers. Lawyers with the most upvotes
+appear at the top of the all lawyers ranking, while the most popular answers appear first under every question. 
 
--Use bundle install to install dependencies.
+Installation and Usage
 
-Usage
--Run rake db:mirgrate.
+- Fork and clone repo.
 
--Run shotgun. Head to your browser to open the app.
+- Cd into folder. 
+
+- Run bundle install to install dependencies.
+
+- Run rake db:migrate.
+
+- Run shotgun and open the page in your browser.
 
 Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/Bibraj96/game_reviews. This project is intended to be a safe and welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/dpataki92/FreeLawyer. This project is intended to be a safe and welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 License
+
 The project is available as open source under the terms of the MIT License.
+
+Code of Conduct
+
+Everyone interacting in the FreeLawyer project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
