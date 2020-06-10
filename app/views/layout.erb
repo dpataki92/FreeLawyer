@@ -6,22 +6,20 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-
     <title>FreeLawyer</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <link rel="stylesheet" href="/stylesheets/all.css" />
     <link rel="stylesheet" media="screen, projection" href="/stylesheets/flash.css" />
   </head>
+  
   <body>
 
-    <%if request.path_info == "/" || request.path_info == "/login" || request.path_info == "/signup/client" || request.path_info == "/signup/lawyer"%>
-    <div class="wrapper" id="invisible">
-    <%else%>
-    <div class="wrapper">
-    <%end%>
+  <%if request.path_info == "/" || request.path_info == "/login" || request.path_info == "/signup/client" || request.path_info == "/signup/lawyer"%>
+  <div class="wrapper" id="invisible">
+  <%else%>
+  <div class="wrapper">
+  <%end%>
 
     <div class="page">
         <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
@@ -47,8 +45,7 @@
     <br>
     
         <%= yield %>
-
-      
+    
       <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
       <footer class="branding">
         <strong><small>&copy; 2020 FreeLawyer</strong></small>
@@ -57,7 +54,7 @@
         <%end%>
       </footer>
       <%end%>
-    </div>
+  </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 7]>

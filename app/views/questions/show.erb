@@ -1,5 +1,4 @@
 <div class="page">
-
     
     <br><br>
     <h4>Title:</h4> <br>
@@ -17,6 +16,7 @@
             Edited at: <%=@question.updated_at%><br>
         <%end%><br>
     </div>
+    
     <%if @user_type == "client" && @question.client == current_user%>
         <form action="/questions/<%=@question.slug%>/edit" method="get">
             <input class="submit" type="submit" value="Edit Your Question">
@@ -45,7 +45,7 @@
                 <%if @user_type == "lawyer" && current_user == a.lawyer%>
                 <form action="/questions/<%=@question.slug%>/answers/<%=a.id%>" method="post">
                 <input type="hidden" id="hidden" name="_method" value="delete">
-                <input class="submit" type="submit" value="Delete Your Answer">
+                <input class="submit" type="submit" value="Delete Your Answer"><br>
                 </form>
                 <%end%>
             <%end%>
