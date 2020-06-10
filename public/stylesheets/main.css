@@ -202,11 +202,12 @@ h2.login {
 
 .login-page h2 {
   text-align: center;
+  color: #FFFFFF;
 }
 
 .login-page h4 {
   text-align: center;
-  color: #4CAF50;
+  color: #FFFFFF;
   margin-bottom: 10px;
 }
 
@@ -270,6 +271,14 @@ strong {
 footer {
   display: flex;
   justify-content: space-between;
+}
+
+.wrapper#invisible {
+  visibility: hidden;
+}
+
+.wrapper>.login-page {
+    visibility: visible;
 }
 
 

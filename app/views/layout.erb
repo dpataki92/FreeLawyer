@@ -17,11 +17,13 @@
   </head>
   <body>
 
+    <%if request.path_info == "/" || request.path_info == "/login" || request.path_info == "/signup/client" || request.path_info == "/signup/lawyer"%>
+    <div class="wrapper" id="invisible">
+    <%else%>
     <div class="wrapper">
-      
-
+    <%end%>
+    
     <div class="page">
-
         <%if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup/client" && request.path_info != "/signup/lawyer"%>
         <nav class="menu">
         <ul class="menu__list">
@@ -44,8 +46,6 @@
     </div>
     <br>
     
-    
-        
         <%= yield %>
 
       <footer class="branding">
